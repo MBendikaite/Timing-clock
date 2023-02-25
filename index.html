@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<style>
+    body{
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    background: #0f3854;
+    background-size: 100%;
+}
+    
+    #txt{
+    position: relative;
+    font-size: 200px;
+    font-family: 'Share Tech Mono', monospace;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top:250%;
+    transform: translate(-50%, -50%);
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+
+    }
+
+    h2{
+        font-size: 100px;
+        margin: 0 auto;
+        color: #daf6ff;
+        text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+    }
+    .container{
+        position: relative;
+        margin: 0 auto;
+        width: 1140px;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<body onload="startTime()">
+    <div class="container">
+    <div id="clock"> 
+        <h2>Timing clock</h2>
+            <div id="txt"></div>
+      </div> 
+    <script>
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+    function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};
+  return i;
+}
+
+
+    </script>
+</body>
+</html>
